@@ -12,8 +12,12 @@ defmodule Web3 do
       :world
 
   """
-  def hello do
-    :world
+  def is_address?(hex_string) do
+    if not Web3.Hex.is_hex?(hex_string) do
+      false
+    else
+      true
+    end
   end
 end
 

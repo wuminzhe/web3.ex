@@ -31,7 +31,8 @@ defmodule Web3.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.11.1"},
-      {:exjson, "~> 0.6.0"}
+      {:exjson, "~> 0.6.0"},
+      {:ok, "~> 1.6"}
     ]
   end
 end
