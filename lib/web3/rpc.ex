@@ -18,24 +18,27 @@ defmodule Web3.Rpc do
   end
 
   def invoke(method, params \\ []) do
-    data = %{
-      :jsonrpc => "2.0",
-      :method => method,
-      :params => params,
-      :id => :rand.uniform(100)
-    }
-    data_str = ExJSON.generate(data)
+    data = [
+      jsonrpc: "2.0",
+      method: method,
+      params: params,
+      id: :rand.uniform(100)
+    ]
+    data_str = elem(JSON.encode(data), 1)
+    # IO.puts data_str
     response = HTTPoison.post! "http://localhost:8545", data_str
 
     # IO.puts response.body
     case response do
       %HTTPoison.Response{status_code: 200, body: body} ->
-        obj = ExJSON.parse(body, :to_map)
-        cond do
-          obj["result"] != nil ->
-            {:ok, obj["result"]}
-          obj["error"] != nil ->
-            {:error, obj["error"]}
+        obj = elem(JSON.decode(body), 1)
+        case obj do
+          %{"jsonrpc" => "2.0", "result" => nil} ->
+            {:error, "Not Found"}
+          %{"jsonrpc" => "2.0", "result" => result} ->
+            {:ok, result}
+          %{"jsonrpc" => "2.0", "error" => error} ->
+            {:error, error}
         end
       %HTTPoison.Response{status_code: code} ->
         {:error, code}
