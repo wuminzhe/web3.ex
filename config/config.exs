@@ -10,7 +10,15 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :web3, key: :value
+    # config :web3, receive_transaction_cmd: """
+    # curl -i -u admin:ed018608 -H "content-type:application/json" -X POST \
+    # -d '{"properties":{},"routing_key":"peatio.deposit.coin","payload":"<transaction>","payload_encoding":"string"}' \
+    # http://localhost:5672/api/exchanges/%2f//publish
+    # """
+
+    # config :web3, receive_transaction_cmd: """
+    # echo "<transaction>"
+    # """
 #
 # And access this configuration in your application as:
 #
@@ -18,7 +26,8 @@ use Mix.Config
 #
 # Or configure a 3rd-party app:
 #
-#     config :logger, level: :info
+    # config :logger, :file_log, path: "./filter.log", level: :info
+    config :logger, level: :info
 #
 
 # It is also possible to import configuration files, relative to this

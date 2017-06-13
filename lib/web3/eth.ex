@@ -34,19 +34,23 @@ defmodule Web3.Eth do
   def getTransactionsByBlockHash(blockHash) do
     with {:ok, block} <- getBlockByHash(blockHash, true)
     do
-      {:ok, block["transactions"] |> Enum.map(&(&1["hash"]))}
+      {:ok, block["transactions"] }
     else
       error -> error
     end
   end
 
   def getTransactionsByBlockHashs(blockHashs) do
-    blockHashs
-    |> Enum.map(&(get_transactions(&1)))
-    |> Enum.concat()
+    {
+      :ok, 
+      blockHashs
+      |> Enum.map(&(get_transactions(&1)))
+      |> Enum.concat()
+    }
   end
 
   # private -----------------------------------------------------------------
+  
   defp get_transactions(block_hash) do
     with {:ok, transactions} <- Web3.Eth.getTransactionsByBlockHash(block_hash)
     do

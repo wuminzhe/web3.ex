@@ -16,7 +16,7 @@ defmodule Web3.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [extra_applications: [:logger, :httpoison],
-     mod: {Web3.Application, []}]
+     mod: {Web3, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -32,7 +32,8 @@ defmodule Web3.Mixfile do
     [
       {:httpoison, "~> 0.11.1"},
       {:ok, "~> 1.6"},
-      {:json, "~> 1.0"}
+      {:json, "~> 1.0"},
+      {:hexate,  ">= 0.6.0"}
     ]
   end
 end

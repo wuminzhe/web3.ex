@@ -1,23 +1,15 @@
 defmodule Web3 do
-  @moduledoc """
-  Documentation for Web3.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
 
-  ## Examples
+    import Supervisor.Spec
+    children = [
+      worker(Task, [Web3.Filter, :watch, []])
+    ]
 
-      iex> Web3.hello
-      :world
-
-  """
-  def is_address?(hex_string) do
-    if not Web3.Hex.is_hex?(hex_string) do
-      false
-    else
-      true
-    end
+    opts = [strategy: :one_for_one, name: Web3.Filter.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 end
 

@@ -1,8 +1,4 @@
 defmodule Web3.Hex do
-  @moduledoc """
-  Base-16 hexadecimal bitstring utility functions
-  """
-
   require OK
 
   @prefix             "0x"
