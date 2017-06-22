@@ -4,7 +4,7 @@ Ethereum Elixir API
 
 ## Api list
 
-The apis from official rpc apis, read offical [JSON RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC) document for more details:
+The apis from official rpc, read official [JSON RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC) document for more details:
 ```
 Web3.Eth.coinbase()
 Web3.Eth.getBalance(address, blockNumber)
