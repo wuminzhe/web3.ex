@@ -39,18 +39,16 @@ Web3.Eth.getLogs(object)
 
 The apis added by web3.ex
 ```
-def getTransactionsByBlockHash(blockHash)
-def getTransactionsByBlockHashs(blockHashs)
+Web3.Eth.getTransactionsByBlockHash(blockHash)
+Web3.Eth.getTransactionsByBlockHashs(blockHashs)
 ```
-
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `web3` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:web3, "~> 0.1.0"}]
+  [{:web3, git: "ssh://git@gitlab.chainresearch.org:50022/exchange/web3.ex.git"}]
 end
 ```
