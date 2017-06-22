@@ -20,7 +20,7 @@ defmodule Web3.Eth do
   defrpc call(object, blockNumber)
   defrpc estimateGas(object, blockNumber)
   defrpc getBlockByHash(blockHash, returnTransactionObjects)
-  defrpc getBlockByNumber(blockNumber, return_transaction_objects)
+  defrpc getBlockByNumber(blockNumber, returnTransactionObjects)
   defrpc getTransaction(hash)
   defrpc getTransactionByBlockHashAndIndex(blockHash, index)
   defrpc newFilter(object)
@@ -42,7 +42,7 @@ defmodule Web3.Eth do
 
   def getTransactionsByBlockHashs(blockHashs) do
     {
-      :ok, 
+      :ok,
       blockHashs
       |> Enum.map(&(get_transactions(&1)))
       |> Enum.concat()
@@ -50,7 +50,7 @@ defmodule Web3.Eth do
   end
 
   # private -----------------------------------------------------------------
-  
+
   defp get_transactions(block_hash) do
     with {:ok, transactions} <- Web3.Eth.getTransactionsByBlockHash(block_hash)
     do
