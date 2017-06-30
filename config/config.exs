@@ -19,6 +19,9 @@ use Mix.Config
     # config :web3, receive_transaction_cmd: """
     # echo "<transaction>"
     # """
+
+config :web3, node_url: "http://localhost:8545"
+
 #
 # And access this configuration in your application as:
 #

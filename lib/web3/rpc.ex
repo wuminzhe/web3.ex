@@ -26,7 +26,7 @@ defmodule Web3.Rpc do
     ]
     data_str = elem(JSON.encode(data), 1)
     # IO.puts data_str
-    response = HTTPoison.post! "http://localhost:8545", data_str
+    response = HTTPoison.post! Application.get_env(:web3, :node_url), data_str
 
     # IO.puts response.body
     case response do
@@ -43,6 +43,6 @@ defmodule Web3.Rpc do
       %HTTPoison.Response{status_code: code} ->
         {:error, code}
     end
-    
+
   end
 end
