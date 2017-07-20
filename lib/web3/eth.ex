@@ -49,7 +49,7 @@ defmodule Web3.Eth do
     }
   end
 
-  # private -----------------------------------------------------------------
+  # private functions
 
   defp get_transactions(block_hash) do
     with {:ok, transactions} <- Web3.Eth.getTransactionsByBlockHash(block_hash)
