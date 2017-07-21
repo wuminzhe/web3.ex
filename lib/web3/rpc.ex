@@ -1,4 +1,5 @@
 defmodule Web3.Rpc do
+  require Logger
 
   defmacro __using__([prefix: prefix]) do
     quote do
@@ -26,8 +27,9 @@ defmodule Web3.Rpc do
     ]
     data_str = elem(JSON.encode(data), 1)
     # IO.puts data_str
-    response = HTTPoison.post! Application.get_env(:web3, :node_url), data_str
+    response = HTTPoison.post! "http://localhost:8545", data_str, [{"Content-Type", "application/json"}]
 
+    Logger.info Application.get_env(:web3, :node_url)
     # IO.puts response.body
     case response do
       %HTTPoison.Response{status_code: 200, body: body} ->
