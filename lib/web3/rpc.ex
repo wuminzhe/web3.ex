@@ -29,7 +29,6 @@ defmodule Web3.Rpc do
     # IO.puts data_str
     response = HTTPoison.post! "http://localhost:8545", data_str, [{"Content-Type", "application/json"}]
 
-    Logger.info Application.get_env(:web3, :node_url)
     # IO.puts response.body
     case response do
       %HTTPoison.Response{status_code: 200, body: body} ->

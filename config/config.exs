@@ -21,7 +21,6 @@ use Mix.Config
     # """
 
     config :web3, node_url: "http://localhost:8545"
-    # config :web3, node_url: "http://116.62.16.229:30803"
 
 #
 # And access this configuration in your application as:
