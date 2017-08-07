@@ -49,6 +49,6 @@ by adding `web3` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:web3, git: "ssh://git@gitlab.chainresearch.org:50022/exchange/web3.ex.git"}]
+  [{:web3, git: "git@github.com:wuminzhe/web3.ex.git"}]
 end
 ```
